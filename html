@@ -1,0 +1,160 @@
+ (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
+diff --git a/index.html b/index.html
+new file mode 100644
+index 0000000000000000000000000000000000000000..42cd9cf638ab773996a0b8cfc421e71348c19978
+--- /dev/null
++++ b/index.html
+@@ -0,0 +1,150 @@
++<!doctype html>
++<html lang="en">
++  <head>
++    <meta charset="UTF-8" />
++    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
++    <title>Teho — Software & Systems Engineer</title>
++    <meta
++      name="description"
++      content="Portfolio of Teho, an Integrated Engineering student focused on backend, systems, and embedded software."
++    />
++    <link rel="preconnect" href="https://fonts.googleapis.com" />
++    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
++    <link
++      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
++      rel="stylesheet"
++    />
++    <link rel="stylesheet" href="styles.css" />
++  </head>
++  <body>
++    <header class="hero container">
++      <p class="eyebrow">University of British Columbia • Integrated Engineering</p>
++      <h1>Teho — Software & Systems Engineer</h1>
++      <p class="intro">
++        Third-year Integrated Engineering student building backend systems, embedded control
++        platforms, and practical software that performs reliably in real-world constraints.
++      </p>
++      <div class="hero-links">
++        <a class="btn btn-primary" href="https://github.com/teho" target="_blank" rel="noreferrer">GitHub</a>
++        <a class="btn btn-secondary" href="#" aria-label="Resume link placeholder">Resume</a>
++      </div>
++    </header>
++
++    <main class="container">
++      <section id="projects" class="section">
++        <div class="section-heading">
++          <h2>Highlighted Projects</h2>
++          <p>High-impact engineering work across robotics, backend architecture, and sensing systems.</p>
++        </div>
++
++        <div class="project-grid">
++          <article class="card project-card">
++            <div class="card-top">
++              <h3>Tele-operated Robotic Hand</h3>
++              <span class="pill">Embedded Systems</span>
++            </div>
++            <p>
++              ESP32-based robotic hand controlled by a glove with flex sensors using ESP-NOW for low-latency,
++              wireless motion mapping.
++            </p>
++            <ul>
++              <li>Achieved &lt; 50 ms command-to-actuation latency.</li>
++              <li>Implemented multi-DOF servo control with reliable finger articulation.</li>
++              <li>Designed sensor calibration and signal filtering for stable control.</li>
++            </ul>
++            <p class="stack"><strong>Tech:</strong> ESP32, C/C++, Arduino IDE, Servo Control, ESP-NOW</p>
++            <a href="https://github.com/teho/tele-operated-robotic-hand" target="_blank" rel="noreferrer">View on GitHub →</a>
++          </article>
++
++          <article class="card project-card">
++            <div class="card-top">
++              <h3>Clean Architecture Book API</h3>
++              <span class="pill">Backend</span>
++            </div>
++            <p>
++              Production-style backend API using layered architecture for maintainability and testability,
++              with robust data modeling and containerized deployment.
++            </p>
++            <ul>
++              <li>Built full CRUD + search endpoints with clear separation of concerns.</li>
++              <li>Modeled relational data with Prisma and MySQL.</li>
++              <li>Containerized local environment with Docker for consistent onboarding.</li>
++            </ul>
++            <p class="stack"><strong>Tech:</strong> TypeScript, Express, Prisma, MySQL, Docker</p>
++            <a href="https://github.com/teho/clean-architecture-book-api" target="_blank" rel="noreferrer">View on GitHub →</a>
++          </article>
++
++          <article class="card project-card">
++            <div class="card-top">
++              <h3>Wildfire Detection System</h3>
++              <span class="pill">Hardware + Data</span>
++            </div>
++            <p>
++              Arduino-based wildfire monitoring prototype using environmental sensors and threshold logic
++              to identify fire-risk conditions.
++            </p>
++            <ul>
++              <li>Reached 95% detection accuracy during controlled test scenarios.</li>
++              <li>Integrated multiple sensor channels for robust condition assessment.</li>
++              <li>Prioritized low-cost, practical deployment design choices.</li>
++            </ul>
++            <p class="stack"><strong>Tech:</strong> Arduino, C/C++, Sensor Integration, Embedded Logic</p>
++            <a href="https://github.com/teho/wildfire-detection-system" target="_blank" rel="noreferrer">View on GitHub →</a>
++          </article>
++        </div>
++      </section>
++
++      <section id="skills" class="section">
++        <div class="section-heading">
++          <h2>Skills</h2>
++          <p>Backend, systems, and hardware capabilities for software-intensive engineering roles.</p>
++        </div>
++        <div class="skill-groups">
++          <div class="card">
++            <h3>Programming</h3>
++            <p>TypeScript, Go, C/C++, JavaScript</p>
++          </div>
++          <div class="card">
++            <h3>Backend</h3>
++            <p>Express, Prisma, REST APIs</p>
++          </div>
++          <div class="card">
++            <h3>Systems</h3>
++            <p>Docker, MySQL</p>
++          </div>
++          <div class="card">
++            <h3>Hardware & CAD</h3>
++            <p>Arduino, ESP32, SOLIDWORKS</p>
++          </div>
++        </div>
++      </section>
++
++      <section id="experience" class="section">
++        <div class="section-heading">
++          <h2>Experience</h2>
++        </div>
++        <article class="card experience-card">
++          <div>
++            <h3>Software Engineering Intern — Kalonade</h3>
++            <p class="muted">Backend Engineering Internship</p>
++          </div>
++          <ul>
++            <li>Developed backend APIs for internal product features.</li>
++            <li>Applied Clean Architecture principles to improve maintainability.</li>
++            <li>Contributed to Docker-based development workflows.</li>
++          </ul>
++        </article>
++      </section>
++    </main>
++
++    <footer id="contact" class="container section footer">
++      <h2>Contact</h2>
++      <p>Open to software, systems, and embedded internship opportunities.</p>
++      <div class="contact-links">
++        <a href="mailto:teho@example.com">Email</a>
++        <a href="https://www.linkedin.com" target="_blank" rel="noreferrer">LinkedIn</a>
++        <a href="https://github.com/teho" target="_blank" rel="noreferrer">GitHub</a>
++      </div>
++    </footer>
++  </body>
++</html>
+ 
+EOF
+)
