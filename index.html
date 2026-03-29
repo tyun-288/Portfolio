@@ -1,580 +1,150 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Teho Yun | Engineering Portfolio</title>
-<meta name="description" content="Portfolio of Teho Yun — Integrated Engineering student at UBC specializing in software, robotics, and mechanical design."/>
-<meta property="og:title" content="Teho Yun | Engineering Portfolio"/>
-<meta property="og:description" content="Integrated Engineering student at UBC building software, robotics, and mechanical systems."/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,300;1,9..144,700&display=swap" rel="stylesheet"/>
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-:root{
-  --ink:#0e0e0e;--ink2:#1a1a1a;
-  --paper:#f4f0e8;--paper2:#ede9df;--paper3:#e6e1d5;
-  --red:#d63c2a;--red-light:rgba(214,60,42,0.08);
-  --blue-line:rgba(100,140,200,0.18);--grid-line:rgba(100,140,200,0.12);
-  --muted:#8a8070;--muted2:#b5ac9e;
-  --border:rgba(14,14,14,0.15);--border-heavy:rgba(14,14,14,0.6);
-  --fd:'Bebas Neue',sans-serif;
-  --fs:'Fraunces',serif;
-  --fm:'IBM Plex Mono',monospace;
-}
-html{scroll-behavior:smooth;}
-body{background:var(--paper);color:var(--ink);font-family:var(--fm);font-size:14px;line-height:1.6;overflow-x:hidden;cursor:none;}
-.cursor{position:fixed;width:12px;height:12px;background:var(--red);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s;mix-blend-mode:multiply;}
-.cursor-ring{position:fixed;width:36px;height:36px;border:1px solid var(--ink);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);opacity:.4;}
-body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(var(--grid-line) 1px,transparent 1px),linear-gradient(90deg,var(--grid-line) 1px,transparent 1px);background-size:24px 24px;pointer-events:none;z-index:0;}
-body::after{content:'';position:fixed;inset:0;background-image:linear-gradient(var(--blue-line) 1px,transparent 1px),linear-gradient(90deg,var(--blue-line) 1px,transparent 1px);background-size:120px 120px;pointer-events:none;z-index:0;}
-
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:stretch;height:52px;background:var(--ink);border-bottom:3px solid var(--red);}
-.nav-logo{display:flex;align-items:center;padding:0 1.5rem;font-family:var(--fd);font-size:1.5rem;color:var(--paper);text-decoration:none;letter-spacing:.08em;border-right:1px solid rgba(255,255,255,.1);}
-.nav-logo em{color:var(--red);font-style:normal;}
-.nav-links{display:flex;list-style:none;flex:1;}
-.nav-links li{display:flex;}
-.nav-links a{display:flex;align-items:center;padding:0 1.25rem;font-family:var(--fm);font-size:.65rem;font-weight:500;color:rgba(244,240,232,.5);text-decoration:none;letter-spacing:.12em;text-transform:uppercase;border-right:1px solid rgba(255,255,255,.06);transition:color .2s,background .2s;}
-.nav-links a:hover{color:var(--paper);background:rgba(255,255,255,.05);}
-.nav-end{display:flex;align-items:center;margin-left:auto;padding:0 1.5rem;font-family:var(--fm);font-size:.6rem;color:var(--red);letter-spacing:.1em;border-left:1px solid rgba(255,255,255,.1);gap:.4rem;}
-.nav-end::before{content:'';width:6px;height:6px;background:var(--red);border-radius:50%;animation:blink 1.5s infinite;}
-@keyframes blink{0%,100%{opacity:1;}50%{opacity:.2;}}
-.hamburger{display:none;align-items:center;justify-content:center;background:none;border:none;border-left:1px solid rgba(255,255,255,.1);cursor:pointer;flex-direction:column;gap:4px;padding:0 14px;width:52px;}
-.hamburger span{display:block;width:22px;height:2px;background:var(--paper);border-radius:1px;}
-.mobile-menu{display:none;position:fixed;top:52px;left:0;right:0;background:var(--ink);border-bottom:2px solid var(--red);z-index:199;padding:1rem 0;flex-direction:column;}
-.mobile-menu.open{display:flex;}
-.mobile-menu a{padding:.75rem 1.5rem;font-family:var(--fm);font-size:.75rem;color:rgba(244,240,232,.6);text-decoration:none;text-transform:uppercase;letter-spacing:.1em;border-bottom:1px solid rgba(255,255,255,.05);}
-main{position:relative;z-index:1;}
-
-/* HERO */
-#hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;border-top:52px solid transparent;position:relative;overflow:hidden;}
-.hero-left{padding:clamp(3rem,6vw,5rem) clamp(2rem,5vw,5rem);border-right:2px solid var(--border-heavy);display:flex;flex-direction:column;justify-content:center;position:relative;}
-.hero-left::before{content:'FIG. 01';position:absolute;top:72px;left:clamp(2rem,5vw,5rem);font-family:var(--fm);font-size:.58rem;color:var(--muted2);letter-spacing:.12em;}
-.hero-index{font-family:var(--fm);font-size:.65rem;color:var(--red);letter-spacing:.18em;text-transform:uppercase;margin-bottom:1.5rem;display:flex;align-items:center;gap:.75rem;}
-.hero-index::before{content:'';display:block;width:32px;height:2px;background:var(--red);}
-.hero-name{font-family:var(--fd);font-size:clamp(5rem,12vw,10rem);line-height:.88;letter-spacing:.02em;color:var(--ink);margin-bottom:2rem;}
-.hero-name .accent{-webkit-text-stroke:2px var(--ink);color:transparent;display:block;}
-.hero-tagline{font-family:var(--fs);font-style:italic;font-size:clamp(1rem,2vw,1.25rem);color:var(--muted);font-weight:300;max-width:380px;line-height:1.5;margin-bottom:2.5rem;padding-left:1rem;border-left:2px solid var(--red);}
-.hero-btns{display:flex;gap:.75rem;flex-wrap:wrap;}
-.btn{font-family:var(--fm);font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;padding:.7rem 1.4rem;border:2px solid var(--ink);transition:background .2s,color .2s,transform .15s,box-shadow .15s;cursor:pointer;display:inline-flex;align-items:center;gap:.5rem;}
-.btn:hover{transform:translate(-2px,-2px);box-shadow:3px 3px 0 var(--ink);}
-.btn-filled{background:var(--ink);color:var(--paper);}
-.btn-filled:hover{background:var(--red);border-color:var(--red);box-shadow:3px 3px 0 var(--ink2);}
-.btn-ghost{background:transparent;color:var(--ink);}
-.btn-ghost:hover{background:var(--red-light);border-color:var(--red);color:var(--red);box-shadow:3px 3px 0 var(--muted2);}
-.hero-right{display:flex;flex-direction:column;position:relative;}
-.hero-photo-zone{flex:1;background:var(--paper2);border-bottom:2px solid var(--border-heavy);display:flex;align-items:center;justify-content:center;position:relative;min-height:60%;overflow:hidden;}
-.hero-photo-zone::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(100,140,200,.07) 1px,transparent 1px),linear-gradient(90deg,rgba(100,140,200,.07) 1px,transparent 1px);background-size:12px 12px;}
-.photo-ph{display:flex;flex-direction:column;align-items:center;gap:.75rem;color:var(--muted2);font-family:var(--fm);font-size:.65rem;letter-spacing:.1em;position:relative;z-index:1;text-align:center;}
-.photo-circle{width:120px;height:120px;border:2px dashed var(--muted2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:2.5rem;}
-.photo-xh{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;}
-.photo-xh::before{content:'';position:absolute;width:100%;height:1px;background:var(--muted2);opacity:.2;}
-.photo-xh::after{content:'';position:absolute;height:100%;width:1px;background:var(--muted2);opacity:.2;}
-.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);}
-.hero-stat{padding:1.25rem 1.5rem;border-right:1px solid var(--border);}
-.hero-stat:last-child{border-right:none;}
-.hero-stat-num{font-family:var(--fd);font-size:2.2rem;color:var(--ink);line-height:1;letter-spacing:.05em;}
-.hero-stat-label{font-family:var(--fm);font-size:.58rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-top:.25rem;}
-
-/* MARQUEE */
-.marquee-strip{background:var(--ink);border-top:2px solid var(--red);border-bottom:2px solid var(--red);padding:.6rem 0;overflow:hidden;white-space:nowrap;position:relative;z-index:1;}
-.marquee-track{display:inline-flex;animation:marquee 25s linear infinite;gap:0;}
-.marquee-item{font-family:var(--fd);font-size:1.1rem;color:var(--paper);letter-spacing:.15em;padding:0 2rem;}
-.marquee-item.red{color:var(--red);}
-.marquee-sep{color:rgba(244,240,232,.2);padding:0 .5rem;}
-@keyframes marquee{from{transform:translateX(0);}to{transform:translateX(-50%);}}
-
-/* ABOUT */
-#about{display:grid;grid-template-columns:280px 1fr;min-height:70vh;border-top:2px solid var(--border-heavy);position:relative;z-index:1;}
-.about-sidebar{background:var(--ink);color:var(--paper);padding:4rem 2rem;border-right:2px solid var(--border-heavy);display:flex;flex-direction:column;justify-content:space-between;position:relative;}
-.about-sidebar-label{font-family:var(--fd);font-size:.8rem;letter-spacing:.2em;color:rgba(244,240,232,.3);writing-mode:vertical-rl;text-orientation:mixed;transform:rotate(180deg);align-self:flex-end;}
-.about-sidebar-num{font-family:var(--fd);font-size:6rem;color:rgba(244,240,232,.06);line-height:1;position:absolute;bottom:2rem;left:2rem;}
-.about-sidebar-tag{background:var(--red);color:var(--paper);font-family:var(--fm);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;padding:.35rem .75rem;display:inline-block;align-self:flex-start;}
-.about-content{padding:clamp(3rem,6vw,5rem);position:relative;}
-.about-content::before{content:'// ABOUT.TXT';position:absolute;top:2rem;right:2rem;font-family:var(--fm);font-size:.6rem;color:var(--muted2);letter-spacing:.1em;}
-.about-heading{font-family:var(--fs);font-size:clamp(2rem,4vw,3.2rem);font-weight:700;line-height:1.1;letter-spacing:-.02em;color:var(--ink);margin-bottom:2.5rem;}
-.about-heading em{font-style:italic;font-weight:300;color:var(--red);}
-.about-paragraphs{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem 3rem;max-width:780px;}
-.about-paragraphs p{font-family:var(--fm);font-size:.78rem;color:#3a3530;line-height:1.8;}
-.about-paragraphs p strong{color:var(--ink);font-weight:600;}
-.about-note{margin-top:2.5rem;padding:1.25rem 1.5rem;background:var(--red-light);border-left:3px solid var(--red);font-family:var(--fs);font-style:italic;font-size:.9rem;color:var(--ink);max-width:480px;line-height:1.6;}
-
-/* SKILLS */
-#skills{border-top:2px solid var(--border-heavy);position:relative;z-index:1;}
-.skills-header{display:flex;align-items:stretch;border-bottom:2px solid var(--border-heavy);}
-.skills-header-title{padding:1.5rem clamp(2rem,5vw,5rem);font-family:var(--fd);font-size:clamp(3rem,7vw,6rem);color:var(--ink);letter-spacing:.03em;line-height:1;flex:1;}
-.skills-header-desc{padding:1.5rem 2rem;font-family:var(--fm);font-size:.68rem;color:var(--muted);border-left:2px solid var(--border);max-width:240px;display:flex;align-items:center;line-height:1.7;letter-spacing:.02em;}
-.skills-body{display:grid;grid-template-columns:repeat(4,1fr);}
-.skill-col{padding:2.5rem clamp(1.5rem,3vw,2.5rem);border-right:1px solid var(--border);position:relative;}
-.skill-col:last-child{border-right:none;}
-.skill-col-num{font-family:var(--fd);font-size:5rem;color:rgba(14,14,14,.04);position:absolute;top:.5rem;right:1rem;line-height:1;pointer-events:none;}
-.skill-col-title{font-family:var(--fm);font-size:.6rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin-bottom:1.5rem;padding-bottom:.75rem;border-bottom:1px solid var(--border);}
-.skill-list{list-style:none;display:flex;flex-direction:column;gap:.5rem;}
-.skill-list li{font-family:var(--fm);font-size:.78rem;color:var(--ink2);padding:.35rem 0;border-bottom:1px dashed rgba(14,14,14,.08);transition:color .2s,padding-left .2s;display:flex;align-items:center;gap:.5rem;cursor:default;}
-.skill-list li::before{content:'—';color:var(--muted2);font-size:.7rem;flex-shrink:0;}
-.skill-list li:hover{color:var(--red);padding-left:.4rem;}
-.skill-list li:hover::before{color:var(--red);}
-
-/* EXPERIENCE */
-#experience{background:var(--paper2);border-top:2px solid var(--border-heavy);position:relative;z-index:1;padding:clamp(3rem,6vw,5rem) clamp(2rem,5vw,5rem);}
-.exp-section-title{font-family:var(--fd);font-size:clamp(3rem,8vw,7rem);color:var(--ink);letter-spacing:.02em;line-height:.9;margin-bottom:3rem;}
-.exp-section-title span{-webkit-text-stroke:1.5px var(--ink);color:transparent;}
-.exp-items{display:flex;flex-direction:column;gap:0;}
-.exp-item{display:grid;grid-template-columns:200px 1fr;border-top:1px solid var(--border-heavy);transition:background .2s;}
-.exp-item:last-child{border-bottom:1px solid var(--border-heavy);}
-.exp-item:hover{background:rgba(214,60,42,.03);}
-.exp-item-left{padding:2rem 2rem 2rem 0;border-right:1px solid var(--border);display:flex;flex-direction:column;justify-content:flex-start;gap:.5rem;}
-.exp-item-num{font-family:var(--fd);font-size:.75rem;color:var(--muted2);letter-spacing:.12em;}
-.exp-item-date{font-family:var(--fm);font-size:.65rem;color:var(--muted);line-height:1.5;}
-.exp-badge{display:inline-block;font-family:var(--fm);font-size:.55rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:.2rem .5rem;margin-top:.25rem;align-self:flex-start;}
-.exp-badge-current{background:var(--ink);color:var(--paper);}
-.exp-badge-upcoming{background:transparent;color:var(--red);border:1px solid var(--red);}
-.exp-item-right{padding:2rem 2rem 2rem 2.5rem;}
-.exp-company-name{font-family:var(--fd);font-size:clamp(1.5rem,3vw,2.5rem);color:var(--ink);letter-spacing:.04em;line-height:1;margin-bottom:.25rem;}
-.exp-role-title{font-family:var(--fs);font-style:italic;font-size:.9rem;color:var(--red);font-weight:300;margin-bottom:1.25rem;}
-.exp-bullets{list-style:none;display:flex;flex-direction:column;gap:.5rem;}
-.exp-bullets li{font-family:var(--fm);font-size:.73rem;color:#3a3530;padding-left:1.25rem;position:relative;line-height:1.6;}
-.exp-bullets li::before{content:'→';position:absolute;left:0;color:var(--red);font-size:.65rem;}
-
-/* PROJECTS */
-#projects{border-top:2px solid var(--border-heavy);position:relative;z-index:1;}
-.projects-header{padding:2.5rem clamp(2rem,5vw,5rem);border-bottom:2px solid var(--border-heavy);display:flex;align-items:baseline;gap:2rem;}
-.projects-header-title{font-family:var(--fd);font-size:clamp(3rem,8vw,7rem);color:var(--ink);letter-spacing:.02em;line-height:1;}
-.projects-header-note{font-family:var(--fs);font-style:italic;font-size:1rem;color:var(--muted);font-weight:300;}
-.projects-grid{display:grid;grid-template-columns:repeat(3,1fr);}
-.proj-card{border-right:1px solid var(--border-heavy);display:flex;flex-direction:column;position:relative;overflow:hidden;cursor:pointer;transition:background .25s;}
-.proj-card:last-child{border-right:none;}
-.proj-card:hover{background:var(--paper2);}
-.proj-card:hover .proj-img-zone{opacity:.7;}
-.proj-num{position:absolute;top:1.25rem;right:1.5rem;font-family:var(--fd);font-size:4rem;color:rgba(14,14,14,.05);line-height:1;pointer-events:none;z-index:0;}
-.proj-img-zone{height:200px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:4rem;position:relative;overflow:hidden;transition:opacity .3s;}
-.proj-img-robotic{background:repeating-linear-gradient(45deg,var(--paper2) 0,var(--paper2) 2px,var(--paper3) 2px,var(--paper3) 14px);}
-.proj-img-wildfire{background:repeating-linear-gradient(-45deg,var(--paper2) 0,var(--paper2) 2px,#ede0d0 2px,#ede0d0 14px);}
-.proj-img-batman{background:repeating-linear-gradient(90deg,var(--paper2) 0,var(--paper2) 2px,var(--paper3) 2px,var(--paper3) 14px);}
-.proj-body{padding:1.75rem 1.75rem 2rem;flex:1;display:flex;flex-direction:column;position:relative;z-index:1;}
-.proj-cat{font-family:var(--fm);font-size:.58rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--red);margin-bottom:.6rem;}
-.proj-title{font-family:var(--fs);font-size:1.2rem;font-weight:700;color:var(--ink);letter-spacing:-.01em;line-height:1.2;margin-bottom:.75rem;}
-.proj-desc{font-family:var(--fm);font-size:.71rem;color:#5a5248;line-height:1.7;flex:1;margin-bottom:1.25rem;}
-.proj-metric{font-family:var(--fm);font-size:.65rem;color:var(--red);background:var(--red-light);padding:.4rem .75rem;border-left:2px solid var(--red);margin-bottom:1.25rem;letter-spacing:.02em;}
-.proj-tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:1.25rem;}
-.proj-tag{font-family:var(--fm);font-size:.6rem;color:var(--muted);border:1px solid var(--border);padding:.2rem .5rem;letter-spacing:.04em;transition:border-color .2s,color .2s;}
-.proj-card:hover .proj-tag{border-color:var(--red);color:var(--red);}
-.proj-links{display:flex;gap:.5rem;}
-.proj-link{font-family:var(--fm);font-size:.62rem;font-weight:600;text-transform:uppercase;letter-spacing:.1em;text-decoration:none;color:var(--ink);border:1px solid var(--border-heavy);padding:.3rem .7rem;transition:background .2s,color .2s,border-color .2s;}
-.proj-link:hover{background:var(--ink);color:var(--paper);border-color:var(--ink);}
-
-/* EDUCATION */
-#education{background:var(--ink);color:var(--paper);border-top:2px solid var(--border-heavy);position:relative;z-index:1;overflow:hidden;}
-.edu-inner{display:grid;grid-template-columns:1fr 1fr;min-height:400px;}
-.edu-left{padding:clamp(3rem,6vw,5rem);border-right:1px solid rgba(244,240,232,.1);display:flex;flex-direction:column;justify-content:space-between;position:relative;}
-.edu-left::before{content:'03 / EDUCATION';font-family:var(--fm);font-size:.58rem;color:rgba(244,240,232,.25);letter-spacing:.15em;}
-.edu-bg-text{position:absolute;bottom:-1rem;left:-1rem;font-family:var(--fd);font-size:10rem;color:rgba(244,240,232,.03);line-height:1;pointer-events:none;white-space:nowrap;}
-.edu-school{font-family:var(--fd);font-size:clamp(2rem,4vw,3.5rem);letter-spacing:.03em;line-height:1.05;color:var(--paper);margin-top:1.5rem;}
-.edu-school em{color:var(--red);font-style:normal;}
-.edu-degree{font-family:var(--fs);font-style:italic;font-weight:300;font-size:1rem;color:rgba(244,240,232,.6);margin-top:.5rem;line-height:1.4;}
-.edu-period{font-family:var(--fm);font-size:.65rem;color:var(--red);letter-spacing:.1em;margin-top:1rem;}
-.edu-right{padding:clamp(3rem,6vw,5rem);display:flex;flex-direction:column;justify-content:space-between;}
-.edu-right-title{font-family:var(--fm);font-size:.6rem;color:rgba(244,240,232,.3);letter-spacing:.15em;text-transform:uppercase;margin-bottom:2rem;}
-.affil-item{display:flex;align-items:flex-start;gap:1rem;padding:1.25rem;border:1px solid rgba(244,240,232,.08);margin-bottom:1rem;transition:border-color .2s;}
-.affil-item:hover{border-color:var(--red);}
-.affil-dot{width:8px;height:8px;background:var(--red);border-radius:50%;flex-shrink:0;margin-top:4px;}
-.affil-name{font-family:var(--fm);font-size:.78rem;color:var(--paper);line-height:1.4;}
-.affil-sub{font-family:var(--fm);font-size:.62rem;color:rgba(244,240,232,.35);margin-top:.2rem;letter-spacing:.06em;}
-.edu-focus-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:auto;padding-top:2rem;}
-.edu-focus-tag{font-family:var(--fm);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(244,240,232,.4);border:1px solid rgba(244,240,232,.12);padding:.25rem .6rem;}
-
-/* CONTACT */
-#contact{border-top:2px solid var(--border-heavy);position:relative;z-index:1;overflow:hidden;}
-.contact-inner{display:grid;grid-template-columns:1fr 1fr;}
-.contact-left{padding:clamp(3rem,6vw,5rem);border-right:2px solid var(--border-heavy);position:relative;}
-.contact-label{font-family:var(--fm);font-size:.6rem;color:var(--red);letter-spacing:.18em;text-transform:uppercase;margin-bottom:1.5rem;}
-.contact-big{font-family:var(--fd);font-size:clamp(3.5rem,9vw,8rem);color:var(--ink);letter-spacing:.01em;line-height:.88;margin-bottom:2.5rem;}
-.contact-big span{-webkit-text-stroke:2px var(--ink);color:transparent;display:block;}
-.contact-sub{font-family:var(--fs);font-style:italic;font-size:1rem;color:var(--muted);font-weight:300;max-width:320px;line-height:1.6;}
-.contact-right{padding:clamp(3rem,6vw,5rem);display:flex;flex-direction:column;gap:0;}
-.contact-item{display:flex;align-items:center;gap:1.5rem;padding:1.5rem 0;border-bottom:1px solid var(--border);text-decoration:none;color:var(--ink);transition:padding-left .25s;}
-.contact-item:first-child{padding-top:0;}
-.contact-item:hover{padding-left:.5rem;}
-.contact-item:hover .ci-icon{background:var(--red);color:var(--paper);border-color:var(--red);}
-.contact-item:hover .ci-value{color:var(--red);}
-.ci-icon{width:44px;height:44px;border:1.5px solid var(--border-heavy);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;transition:background .2s,color .2s,border-color .2s;}
-.ci-label{font-family:var(--fm);font-size:.58rem;color:var(--muted2);text-transform:uppercase;letter-spacing:.12em;}
-.ci-value{font-family:var(--fm);font-size:.88rem;color:var(--ink);font-weight:500;transition:color .2s;}
-.social-row{display:flex;gap:.75rem;flex-wrap:wrap;padding-top:2rem;margin-top:auto;}
-.soc-btn{font-family:var(--fm);font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;color:var(--ink);border:1.5px solid var(--border-heavy);padding:.55rem 1rem;transition:background .2s,color .2s,border-color .2s,transform .15s,box-shadow .15s;display:inline-flex;align-items:center;gap:.4rem;}
-.soc-btn:hover{background:var(--ink);color:var(--paper);transform:translate(-2px,-2px);box-shadow:2px 2px 0 var(--muted2);}
-
-/* FOOTER */
-footer{background:var(--ink);color:rgba(244,240,232,.3);padding:1.25rem clamp(2rem,5vw,5rem);display:flex;justify-content:space-between;align-items:center;font-family:var(--fm);font-size:.62rem;letter-spacing:.08em;border-top:3px solid var(--red);position:relative;z-index:1;}
-footer span{color:var(--red);}
-
-/* ANIMATIONS */
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
-.reveal.on{opacity:1;transform:none;}
-.reveal-left{opacity:0;transform:translateX(-24px);transition:opacity .7s ease,transform .7s ease;}
-.reveal-left.on{opacity:1;transform:none;}
-
-/* RESPONSIVE */
-@media(max-width:1000px){
-  .skills-body{grid-template-columns:repeat(2,1fr);}
-  .skills-body .skill-col:nth-child(2){border-right:none;}
-  .skills-body .skill-col:nth-child(3){border-top:1px solid var(--border);}
-  .skills-body .skill-col:nth-child(4){border-top:1px solid var(--border);border-right:none;}
-  .projects-grid{grid-template-columns:1fr;}
-  .proj-card{border-right:none;border-bottom:1px solid var(--border-heavy);}
-  .edu-inner{grid-template-columns:1fr;}
-  .edu-right{border-top:1px solid rgba(244,240,232,.1);}
-}
-@media(max-width:768px){
-  #hero{grid-template-columns:1fr;}
-  .hero-right{border-top:2px solid var(--border-heavy);}
-  .hero-photo-zone{min-height:260px;}
-  #about{grid-template-columns:1fr;}
-  .about-sidebar{flex-direction:row;align-items:center;padding:1.25rem 1.5rem;}
-  .about-sidebar-label{writing-mode:horizontal-tb;transform:none;}
-  .about-sidebar-num{display:none;}
-  .about-paragraphs{grid-template-columns:1fr;}
-  .skills-header{flex-direction:column;gap:0;}
-  .skills-header-desc{max-width:100%;border-left:none;border-top:1px solid var(--border);}
-  .exp-item{grid-template-columns:1fr;}
-  .exp-item-left{border-right:none;border-bottom:1px solid var(--border);padding-bottom:1rem;}
-  .contact-inner{grid-template-columns:1fr;}
-  .contact-left{border-right:none;border-bottom:2px solid var(--border-heavy);}
-  .nav-links{display:none;}
-  .nav-end{display:none;}
-  .hamburger{display:flex;margin-left:auto;}
-  footer{flex-direction:column;gap:.5rem;text-align:center;}
-}
-</style>
-</head>
-<body>
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
-
-<nav>
-  <a href="#" class="nav-logo">TEHO<em>.</em></a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#projects">Projects</a></li>
-    <li><a href="#education">Education</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <div class="nav-end">OPEN TO WORK</div>
-  <button class="hamburger" id="hamburger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#about" onclick="closeMob()">About</a>
-  <a href="#skills" onclick="closeMob()">Skills</a>
-  <a href="#experience" onclick="closeMob()">Experience</a>
-  <a href="#projects" onclick="closeMob()">Projects</a>
-  <a href="#education" onclick="closeMob()">Education</a>
-  <a href="#contact" onclick="closeMob()">Contact</a>
-</div>
-
-<main>
-<!-- HERO -->
-<section id="hero">
-  <div class="hero-left">
-    <div class="hero-index">01 — Portfolio 2025</div>
-    <h1 class="hero-name">TEHO<span class="accent">YUN.</span></h1>
-    <p class="hero-tagline">Integrated Engineering student at UBC — building across software, robotics, and mechanical systems.</p>
-    <div class="hero-btns">
-      <a href="#projects" class="btn btn-filled">View Projects ↓</a>
-      <a href="#contact" class="btn btn-ghost">Contact</a>
-      <a href="#" class="btn btn-ghost">↓ Resume</a>
-    </div>
-  </div>
-  <div class="hero-right">
-    <div class="hero-photo-zone">
-      <div class="photo-xh"></div>
-      <div class="photo-ph">
-        <div class="photo-circle">👤</div>
-        <span>PHOTO / TY</span>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Teho — Software & Systems Engineer</title>
+    <meta
+      name="description"
+      content="Portfolio of Teho, an Integrated Engineering student focused on backend, systems, and embedded software."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero container">
+      <p class="eyebrow">University of British Columbia • Integrated Engineering</p>
+      <h1>Teho Yun — Software & Systems Engineer</h1>
+      <p class="intro">
+        Third-year Integrated Engineering student building backend systems, embedded control
+        platforms, and practical software that performs reliably in real-world constraints.
+      </p>
+      <div class="hero-links">
+        <a class="btn btn-primary" href="https://github.com/tyun-288" target="_blank" rel="noreferrer">GitHub</a>
+        <a class="btn btn-secondary" href="#" aria-label="Resume link placeholder">Resume</a>
       </div>
-    </div>
-    <div class="hero-stats">
-      <div class="hero-stat"><div class="hero-stat-num">2+</div><div class="hero-stat-label">Internships</div></div>
-      <div class="hero-stat"><div class="hero-stat-num">7+</div><div class="hero-stat-label">Languages</div></div>
-      <div class="hero-stat"><div class="hero-stat-num">3</div><div class="hero-stat-label">Projects</div></div>
-    </div>
-  </div>
-</section>
+    </header>
 
-<!-- MARQUEE -->
-<div class="marquee-strip" aria-hidden="true">
-  <div class="marquee-track">
-    <span class="marquee-item">SOFTWARE ENGINEERING</span><span class="marquee-sep">✦</span>
-    <span class="marquee-item red">ROBOTICS</span><span class="marquee-sep">✦</span>
-    <span class="marquee-item">MECHANICAL DESIGN</span><span class="marquee-sep">✦</span>
-    <span class="marquee-item red">EMBEDDED SYSTEMS</span><span class="marquee-sep">✦</span>
-    <span class="marquee-item">BACKEND DEVELOPMENT</span><span class="marquee-sep">✦</span>
-    <span class="marquee-item red">CAD & SOLIDWORKS</span><span class="marquee-sep">✦</span>
-    <span class="marquee-item">UBC INTEGRATED ENGINEERING</span><span class="marquee-sep">✦</span>
-    <span class="marquee-item">SOFTWARE ENGINEERING</span><span class="marquee-sep">✦</span>
-    <span class="marquee-item red">ROBOTICS</span><span class="marquee-sep">✦</span>
-    <span class="marquee-item">MECHANICAL DESIGN</span><span class="marquee-sep">✦</span>
-    <span class="marquee-item red">EMBEDDED SYSTEMS</span><span class="marquee-sep">✦</span>
-    <span class="marquee-item">BACKEND DEVELOPMENT</span><span class="marquee-sep">✦</span>
-    <span class="marquee-item red">CAD & SOLIDWORKS</span><span class="marquee-sep">✦</span>
-    <span class="marquee-item">UBC INTEGRATED ENGINEERING</span><span class="marquee-sep">✦</span>
-  </div>
-</div>
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="about-sidebar">
-    <div class="about-sidebar-tag">02 / About</div>
-    <div class="about-sidebar-label">TEHO YUN — INTEGRATED ENGINEER</div>
-    <div class="about-sidebar-num">02</div>
-  </div>
-  <div class="about-content reveal">
-    <h2 class="about-heading">Engineer by training,<br><em>builder</em> by nature.</h2>
-    <div class="about-paragraphs">
-      <p>I'm an <strong>Integrated Engineering student at the University of British Columbia</strong>, pursuing a Bachelor of Applied Science with a dual focus on mechanical and software disciplines.</p>
-      <p>What defines me is working <strong>end-to-end</strong> — from backend APIs and embedded firmware to 3D-printed assemblies and robotic prototypes. The most interesting problems live at the intersection of software and hardware.</p>
-      <p>I relocated to Canada for university, having never studied abroad before — a move that sharpened my <strong>adaptability and resilience</strong> in ways no classroom could.</p>
-      <p>I'm driven by turning theoretical knowledge into <strong>tangible systems</strong> that solve actual problems — not just prototypes, but things that demonstrably work.</p>
-    </div>
-    <div class="about-note">"The best engineers don't just build what's asked — they understand why it needs to exist."</div>
-  </div>
-</section>
-
-<!-- SKILLS -->
-<section id="skills">
-  <div class="skills-header">
-    <div class="skills-header-title reveal-left">SKILLS &amp;<br>TOOLS</div>
-    <div class="skills-header-desc">A cross-disciplinary toolkit spanning software, firmware, and mechanical engineering — built through real projects, not just coursework.</div>
-  </div>
-  <div class="skills-body">
-    <div class="skill-col reveal">
-      <div class="skill-col-num">01</div>
-      <div class="skill-col-title">Languages</div>
-      <ul class="skill-list">
-        <li>JavaScript</li><li>TypeScript</li><li>Go</li><li>PHP</li><li>SQL</li><li>C / C++</li><li>HTML &amp; CSS</li>
-      </ul>
-    </div>
-    <div class="skill-col reveal">
-      <div class="skill-col-num">02</div>
-      <div class="skill-col-title">Frameworks</div>
-      <ul class="skill-list">
-        <li>Express.js</li><li>Gin (Go)</li><li>Prisma ORM</li><li>MySQL</li><li>Clean Architecture</li><li>REST API Design</li>
-      </ul>
-    </div>
-    <div class="skill-col reveal">
-      <div class="skill-col-num">03</div>
-      <div class="skill-col-title">Hardware</div>
-      <ul class="skill-list">
-        <li>Arduino</li><li>ESP32</li><li>MATLAB</li><li>SOLIDWORKS</li><li>Embedded Systems</li><li>CAD Design</li><li>Prototyping</li>
-      </ul>
-    </div>
-    <div class="skill-col reveal">
-      <div class="skill-col-num">04</div>
-      <div class="skill-col-title">Professional</div>
-      <ul class="skill-list">
-        <li>Technical Writing</li><li>Problem-Solving</li><li>Critical Thinking</li><li>Attention to Detail</li><li>Communication</li><li>Project Management</li><li>Teamwork</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- EXPERIENCE -->
-<section id="experience">
-  <h2 class="exp-section-title reveal-left">WORK <span>EXPERIENCE</span></h2>
-  <div class="exp-items">
-    <div class="exp-item reveal">
-      <div class="exp-item-left">
-        <div class="exp-item-num">01</div>
-        <div class="exp-item-date">Mar 2025<br>— Aug 2025</div>
-        <span class="exp-badge exp-badge-current">Current</span>
-      </div>
-      <div class="exp-item-right">
-        <div class="exp-company-name">KALONADE CO., LTD.</div>
-        <div class="exp-role-title">Software Engineer Intern</div>
-        <ul class="exp-bullets">
-          <li>Designed and implemented backend APIs using TypeScript, Express, Prisma, and MySQL following Clean Architecture principles</li>
-          <li>Developed full-stack applications with HTML, CSS, PHP, SQL, JavaScript, and Go across multiple product surfaces</li>
-          <li>Built and unit-tested a Go (Gin) API with in-memory repositories, demonstrating proficiency across multiple backend stacks</li>
-          <li>Focused on maintainable code, reliable backend logic, and scalable system design</li>
-        </ul>
-      </div>
-    </div>
-    <div class="exp-item reveal">
-      <div class="exp-item-left">
-        <div class="exp-item-num">02</div>
-        <div class="exp-item-date">Starting<br>May 2026</div>
-        <span class="exp-badge exp-badge-upcoming">Upcoming</span>
-      </div>
-      <div class="exp-item-right">
-        <div class="exp-company-name">TEAMLAB INC.</div>
-        <div class="exp-role-title">Incoming — Role TBD</div>
-        <ul class="exp-bullets">
-          <li>Joining TeamLab Inc. in May 2026 — a world-leading digital art collective and technology studio based in Tokyo, Japan</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="projects-header">
-    <div class="projects-header-title reveal-left">PROJECTS</div>
-    <div class="projects-header-note">Selected works — built, presented, and shipped.</div>
-  </div>
-  <div class="projects-grid">
-    <div class="proj-card reveal">
-      <div class="proj-num">01</div>
-      <div class="proj-img-zone proj-img-robotic">🤖</div>
-      <div class="proj-body">
-        <div class="proj-cat">Robotics / Embedded Systems</div>
-        <h3 class="proj-title">Teleoperated Robotic Hand</h3>
-        <p class="proj-desc">Designed and prototyped a wirelessly controlled robotic hand using dual ESP32 microcontrollers and a flex-sensor glove, replicating real-time finger motion with 10 servo joints and 2 DOF per finger.</p>
-        <div class="proj-metric">⚡ Sub-50ms latency · Presented at UBC Capstone Showcase</div>
-        <div class="proj-tags">
-          <span class="proj-tag">ESP32</span><span class="proj-tag">Arduino</span><span class="proj-tag">Robotics</span><span class="proj-tag">C++</span><span class="proj-tag">Wireless</span>
+    <main class="container">
+      <section id="projects" class="section">
+        <div class="section-heading">
+          <h2>Highlighted Projects</h2>
+          <p>High-impact engineering work across robotics, backend architecture, and sensing systems.</p>
         </div>
-        <div class="proj-links"><a href="#" class="proj-link">GitHub ↗</a><a href="#" class="proj-link">Case Study ↗</a></div>
-      </div>
-    </div>
-    <div class="proj-card reveal">
-      <div class="proj-num">02</div>
-      <div class="proj-img-zone proj-img-wildfire">🔥</div>
-      <div class="proj-body">
-        <div class="proj-cat">Hardware / Risk Detection</div>
-        <h3 class="proj-title">Wildfire Detection &amp; Response</h3>
-        <p class="proj-desc">Arduino-based environmental monitoring system using temperature and humidity sensors, triggering an automated sprinkler response mechanism when conditions exceed critical thresholds.</p>
-        <div class="proj-metric">🎯 95% detection and response accuracy achieved</div>
-        <div class="proj-tags">
-          <span class="proj-tag">Arduino</span><span class="proj-tag">Sensors</span><span class="proj-tag">Automation</span><span class="proj-tag">Hardware</span>
-        </div>
-        <div class="proj-links"><a href="#" class="proj-link">GitHub ↗</a></div>
-      </div>
-    </div>
-    <div class="proj-card reveal">
-      <div class="proj-num">03</div>
-      <div class="proj-img-zone proj-img-batman">🦇</div>
-      <div class="proj-body">
-        <div class="proj-cat">CAD / Mechanical Design</div>
-        <h3 class="proj-title">3D Model: Batman's Car</h3>
-        <p class="proj-desc">Led a team to design a scaled 3D model of Batman's Tumbler in SOLIDWORKS — modelling engine components, suspension systems, and jet engine elements from scratch. Presented at a university exhibition.</p>
-        <div class="proj-metric">🏅 High marks for creativity and technical precision</div>
-        <div class="proj-tags">
-          <span class="proj-tag">SOLIDWORKS</span><span class="proj-tag">CAD</span><span class="proj-tag">Assembly</span><span class="proj-tag">Team Lead</span>
-        </div>
-        <div class="proj-links"><a href="#" class="proj-link">View Model ↗</a></div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- EDUCATION -->
-<section id="education">
-  <div class="edu-inner">
-    <div class="edu-left">
-      <div></div>
-      <div>
-        <div class="edu-school">UNIVERSITY<br>OF <em>BRITISH</em><br>COLUMBIA</div>
-        <div class="edu-degree">Bachelor of Integrated Engineering in Applied Science<br>Focus: Mechanical &amp; Software Engineering</div>
-        <div class="edu-period">2023 — May 2028</div>
-      </div>
-      <div class="edu-bg-text">UBC</div>
-    </div>
-    <div class="edu-right reveal">
-      <div class="edu-right-title">04 / Education &amp; Affiliations</div>
-      <div>
-        <div class="affil-item">
-          <div class="affil-dot"></div>
-          <div>
-            <div class="affil-name">Engineers and Geoscientists British Columbia</div>
-            <div class="affil-sub">EGBC · Student Member</div>
+        <div class="project-grid">
+          <article class="card project-card">
+            <div class="card-top">
+              <h3>Tele-operated Robotic Hand</h3>
+              <span class="pill">Embedded Systems</span>
+            </div>
+            <p>
+              ESP32-based robotic hand controlled by a glove with flex sensors using ESP-NOW for low-latency,
+              wireless motion mapping.
+            </p>
+            <ul>
+              <li>Achieved &lt; 50 ms command-to-actuation latency.</li>
+              <li>Implemented multi-DOF servo control with reliable finger articulation.</li>
+              <li>Designed sensor calibration and signal filtering for stable control.</li>
+            </ul>
+            <p class="stack"><strong>Tech:</strong> ESP32, C/C++, Arduino IDE, Servo Control, ESP-NOW</p>
+            <a href="https://github.com/tyun-288/tele-operated-robotic-hand" target="_blank" rel="noreferrer">View on GitHub →</a>
+          </article>
+
+          <article class="card project-card">
+            <div class="card-top">
+              <h3>Clean Architecture Book API</h3>
+              <span class="pill">Backend</span>
+            </div>
+            <p>
+              Production-style backend API using layered architecture for maintainability and testability,
+              with robust data modeling and containerized deployment.
+            </p>
+            <ul>
+              <li>Built full CRUD + search endpoints with clear separation of concerns.</li>
+              <li>Modeled relational data with Prisma and MySQL.</li>
+              <li>Containerized local environment with Docker for consistent onboarding.</li>
+            </ul>
+            <p class="stack"><strong>Tech:</strong> TypeScript, Express, Prisma, MySQL, Docker</p>
+            <a href="https://github.com/tyun-288/clean-architecture-book-api" target="_blank" rel="noreferrer">View on GitHub →</a>
+          </article>
+
+          <article class="card project-card">
+            <div class="card-top">
+              <h3>Wildfire Detection System</h3>
+              <span class="pill">Hardware + Data</span>
+            </div>
+            <p>
+              Arduino-based wildfire monitoring prototype using environmental sensors and threshold logic
+              to identify fire-risk conditions.
+            </p>
+            <ul>
+              <li>Reached 95% detection accuracy during controlled test scenarios.</li>
+              <li>Integrated multiple sensor channels for robust condition assessment.</li>
+              <li>Prioritized low-cost, practical deployment design choices.</li>
+            </ul>
+            <p class="stack"><strong>Tech:</strong> Arduino, C/C++, Sensor Integration, Embedded Logic</p>
+            <a href="https://github.com/tyun-288/wildfire-detection-system" target="_blank" rel="noreferrer">View on GitHub →</a>
+          </article>
+        </div>
+      </section>
+
+      <section id="skills" class="section">
+        <div class="section-heading">
+          <h2>Skills</h2>
+          <p>Backend, systems, and hardware capabilities for software-intensive engineering roles.</p>
+        </div>
+        <div class="skill-groups">
+          <div class="card">
+            <h3>Programming</h3>
+            <p>TypeScript, Go, C/C++, JavaScript</p>
+          </div>
+          <div class="card">
+            <h3>Backend</h3>
+            <p>Express, Prisma, REST APIs</p>
+          </div>
+          <div class="card">
+            <h3>Systems</h3>
+            <p>Docker, MySQL</p>
+          </div>
+          <div class="card">
+            <h3>Hardware & CAD</h3>
+            <p>Arduino, ESP32, SOLIDWORKS</p>
           </div>
         </div>
-      </div>
-      <div class="edu-focus-tags">
-        <span class="edu-focus-tag">Software Engineering</span>
-        <span class="edu-focus-tag">Mechanical Design</span>
-        <span class="edu-focus-tag">Robotics</span>
-        <span class="edu-focus-tag">Embedded Systems</span>
-        <span class="edu-focus-tag">Systems Design</span>
-        <span class="edu-focus-tag">Applied Science</span>
-      </div>
-    </div>
-  </div>
-</section>
+      </section>
 
-<!-- CONTACT -->
-<section id="contact">
-  <div class="contact-inner">
-    <div class="contact-left">
-      <div class="contact-label">05 — Let's connect</div>
-      <div class="contact-big">GET IN<span>TOUCH.</span></div>
-      <p class="contact-sub">Open to internship and co-op roles in software, robotics, product engineering, and mechanical design. Let's build something worth building.</p>
-    </div>
-    <div class="contact-right reveal">
-      <a href="mailto:tehoyun353@gmail.com" class="contact-item">
-        <div class="ci-icon">✉</div>
-        <div><div class="ci-label">Email</div><div class="ci-value">tehoyun353@gmail.com</div></div>
-      </a>
-      <a href="tel:7783453518" class="contact-item">
-        <div class="ci-icon">☎</div>
-        <div><div class="ci-label">Phone</div><div class="ci-value">778-345-3518</div></div>
-      </a>
-      <a href="#" class="contact-item">
-        <div class="ci-icon">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+      <section id="experience" class="section">
+        <div class="section-heading">
+          <h2>Experience</h2>
         </div>
-        <div><div class="ci-label">LinkedIn</div><div class="ci-value">linkedin.com/in/tehoyun</div></div>
-      </a>
-      <a href="#" class="contact-item">
-        <div class="ci-icon">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-        </div>
-        <div><div class="ci-label">GitHub</div><div class="ci-value">github.com/tehoyun</div></div>
-      </a>
-      <div class="social-row">
-        <a href="#" class="soc-btn">↓ Download Resume</a>
+        <article class="card experience-card">
+          <div>
+            <h3>Software Engineering Intern — Kalonade</h3>
+            <p class="muted">Backend Engineering Internship</p>
+          </div>
+          <ul>
+            <li>Developed backend APIs for internal product features.</li>
+            <li>Applied Clean Architecture principles to improve maintainability.</li>
+            <li>Contributed to Docker-based development workflows.</li>
+          </ul>
+        </article>
+      </section>
+    </main>
+
+    <footer id="contact" class="container section footer">
+      <h2>Contact</h2>
+      <p>Open to software, systems, and embedded internship opportunities.</p>
+      <div class="contact-links">
+        <a href="mailto:tehoyun353@gmail.com">Email</a>
+        <a href="https://www.linkedin.com/in/teho-yun-b05981333/" target="_blank" rel="noreferrer">LinkedIn</a>
+        <a href="https://github.com/tyun-288" target="_blank" rel="noreferrer">GitHub</a>
       </div>
-    </div>
-  </div>
-</section>
-</main>
-
-<footer>
-  <div>TEHO YUN <span>✦</span> INTEGRATED ENGINEERING <span>✦</span> UBC</div>
-  <div>© 2025 — VANCOUVER, BC</div>
-</footer>
-
-<script>
-const cursor=document.getElementById('cursor');
-const ring=document.getElementById('cursorRing');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{
-  mx=e.clientX;my=e.clientY;
-  cursor.style.left=mx+'px';cursor.style.top=my+'px';
-});
-(function animRing(){
-  rx+=(mx-rx)*.12;ry+=(my-ry)*.12;
-  ring.style.left=rx+'px';ring.style.top=ry+'px';
-  requestAnimationFrame(animRing);
-})();
-document.querySelectorAll('a,button,.proj-card,.skill-list li').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{cursor.style.width='20px';cursor.style.height='20px';ring.style.opacity='0';});
-  el.addEventListener('mouseleave',()=>{cursor.style.width='12px';cursor.style.height='12px';ring.style.opacity='.4';});
-});
-document.getElementById('hamburger').addEventListener('click',()=>{
-  document.getElementById('mobileMenu').classList.toggle('open');
-});
-function closeMob(){document.getElementById('mobileMenu').classList.remove('open');}
-const ro=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target);}});
-},{threshold:.08,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.reveal,.reveal-left').forEach(el=>ro.observe(el));
-</script>
-</body>
+    </footer>
+  </body>
 </html>
